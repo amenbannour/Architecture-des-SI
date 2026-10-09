@@ -1,6 +1,8 @@
+
 package yous.autolocapi.domain;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,17 +16,21 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Agence {
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idagence;
 
     private String nom;
     private String ville;
     private String adresse;
     private String telephone;
-    @OneToMany(mappedBy = "agence", cascade = CascadeType.ALL)
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "agence")
     private Set<Vehicule> vehicules;
 
-    @OneToMany(mappedBy = "agence", cascade = CascadeType.ALL)
+    @JsonIgnore
+    @OneToMany(mappedBy = "agence")
     private Set<Employe> employes;
 }
