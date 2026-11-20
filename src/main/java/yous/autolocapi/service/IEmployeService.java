@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface IEmployeService {
 
+    // CRUD existant
     List<Employe> retrieveAllEmployes();
 
     Employe addEmploye(Employe e);
@@ -17,4 +18,9 @@ public interface IEmployeService {
     void removeEmploye(Long idEmploye);
 
     List<Employe> addEmployes(List<Employe> employes);
+
+    // Nouvelles methodes : scenario 1
+    Employe desaffecterEmploye(Long idEmploye);
+
+    Employe affecterEmploye(Long idEmploye, Long idAgence);
 }
